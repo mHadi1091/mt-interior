@@ -4,6 +4,11 @@ import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import ServiceAdvantages from "@/components/ServiceAdvantages";
+import ServiceUseCases from "@/components/ServiceUseCases";
+import ServiceGallery from "@/components/ServiceGallery";
+import ServiceProcess from "@/components/ServiceProcess";
+import ServiceSpecs from "@/components/ServiceSpecs";
 import { services, getServiceBySlug } from "@/lib/services";
 
 export function generateStaticParams() {
@@ -36,6 +41,52 @@ export async function generateMetadata({
   };
 }
 
+// Helper function to get layout variants based on service type
+function getLayoutVariants(layoutStyle?: string) {
+  const defaults = {
+    advantages: "list" as const,
+    gallery: "grid" as const,
+    process: "numbered" as const,
+    specs: "sidebar" as const,
+    useCases: "pills" as const,
+  };
+
+  switch (layoutStyle) {
+    case "alternate":
+      return {
+        ...defaults,
+        gallery: "featured" as const,
+        process: "cards" as const,
+        advantages: "grid" as const,
+      };
+    case "featured":
+      return {
+        ...defaults,
+        gallery: "masonry" as const,
+        process: "timeline" as const,
+        advantages: "cards" as const,
+        useCases: "columns" as const,
+      };
+    case "showcase":
+      return {
+        ...defaults,
+        gallery: "masonry" as const,
+        process: "timeline" as const,
+        specs: "compact" as const,
+      };
+    case "minimalist":
+      return {
+        ...defaults,
+        gallery: "featured" as const,
+        process: "steps" as const,
+        specs: "compact" as const,
+        advantages: "grid" as const,
+      };
+    default:
+      return defaults;
+  }
+}
+
 export default async function ServicePage({
   params,
 }: {
@@ -45,13 +96,20 @@ export default async function ServicePage({
   const service = getServiceBySlug(slug);
   if (!service) notFound();
 
+  const layouts = getLayoutVariants(service.layoutStyle);
+  const isAlternateLayout = service.layoutStyle === "alternate";
+  const isMinimalist = service.layoutStyle === "minimalist" || service.layoutStyle === "showcase";
+
   return (
     <>
       <Header />
       <main>
+        {/* Hero Section */}
         <section className="relative overflow-hidden bg-navy-950 pt-32 pb-20 lg:pt-40 lg:pb-24">
-          <div className="mx-auto grid max-w-7xl gap-10 px-6 lg:grid-cols-[1fr_0.9fr] lg:gap-8 lg:px-10">
-            <div className="flex flex-col justify-center">
+          <div className={`mx-auto grid max-w-7xl gap-10 px-6 lg:gap-8 lg:px-10 ${
+            isAlternateLayout ? "lg:grid-cols-[0.9fr_1fr]" : "lg:grid-cols-[1fr_0.9fr]"
+          }`}>
+            <div className={`flex flex-col justify-center ${isAlternateLayout ? "order-2 lg:order-1" : ""}`}>
               <Link
                 href="/#services"
                 className="text-sm text-ivory-100/50 hover:text-brass-300"
@@ -76,7 +134,7 @@ export default async function ServicePage({
                 </Link>
               </div>
             </div>
-            <div className="cut-diagonal-l relative h-72 overflow-hidden lg:h-auto">
+            <div className={`cut-diagonal-l relative h-72 overflow-hidden lg:h-auto ${isAlternateLayout ? "order-1 lg:order-2 cut-diagonal-r" : ""}`}>
               <img
                 src={service.heroImage}
                 alt={service.hero}
@@ -86,95 +144,52 @@ export default async function ServicePage({
           </div>
         </section>
 
-        <section className="bg-ivory-100 py-16 lg:py-20">
-          <div className="mx-auto max-w-7xl px-6 lg:px-10">
-            <div className="grid gap-4 sm:grid-cols-3">
-              {service.gallery.map((img) => (
-                <div key={img.src} className="overflow-hidden">
-                  <img
-                    src={img.src}
-                    alt={img.alt}
-                    className="h-64 w-full object-cover transition-transform duration-500 hover:scale-[1.04]"
-                  />
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
+        {/* Gallery Section */}
+        <ServiceGallery gallery={service.gallery} variant={layouts.gallery} />
 
-        <section className="border-t border-navy-900/10 bg-ivory-100 py-20 lg:py-28">
-          <div className="mx-auto max-w-7xl px-6 lg:px-10">
-            <div className="grid gap-14 lg:grid-cols-[1fr_0.8fr] lg:gap-10">
-              <div>
-                <p className="text-sm tracking-wide text-brass-500">
-                  How it&rsquo;s done
+        {/* Description Section - Only for certain layout styles */}
+        {service.description && (
+          <section className="border-t border-navy-900/10 bg-navy-950 py-16 lg:py-20">
+            <div className="mx-auto max-w-7xl px-6 lg:px-10">
+              <div className="max-w-2xl">
+                <p className="text-sm tracking-wide text-brass-400">About this service</p>
+                <p className="mt-6 text-base leading-relaxed text-ivory-100/80">
+                  {service.description}
                 </p>
-                <h2 className="mt-4 font-display text-3xl text-navy-900 sm:text-4xl">
-                  Our process for this job.
-                </h2>
-
-                <ol className="mt-10 grid gap-x-8 gap-y-10 sm:grid-cols-3">
-                  {service.process.map((step, i) => (
-                    <li key={step.title} className="border-t border-navy-900/10 pt-5">
-                      <span className="font-display text-lg text-brass-500">
-                        {String(i + 1).padStart(2, "0")}
-                      </span>
-                      <h3 className="mt-2 font-display text-xl text-navy-900">
-                        {step.title}
-                      </h3>
-                      <p className="mt-2 text-sm leading-relaxed text-navy-900/55">
-                        {step.desc}
-                      </p>
-                    </li>
-                  ))}
-                </ol>
-
-                <div className="mt-16">
-                  <p className="text-sm tracking-wide text-brass-500">
-                    Common questions
-                  </p>
-                  <div className="mt-6 divide-y divide-navy-900/10 border-t border-navy-900/10">
-                    {service.faqs.map((f) => (
-                      <div key={f.q} className="py-5">
-                        <h3 className="font-display text-lg text-navy-900">
-                          {f.q}
-                        </h3>
-                        <p className="mt-2 text-sm leading-relaxed text-navy-900/60">
-                          {f.a}
-                        </p>
-                      </div>
-                    ))}
-                  </div>
-                </div>
               </div>
-
-              <aside className="h-fit border border-navy-900/10 p-7">
-                <h3 className="font-display text-lg text-navy-900">
-                  At a glance
-                </h3>
-                <dl className="mt-5 flex flex-col gap-4">
-                  {service.specs.map((spec) => (
-                    <div key={spec.label}>
-                      <dt className="text-xs text-navy-900/45">
-                        {spec.label}
-                      </dt>
-                      <dd className="mt-1 text-sm text-navy-900">
-                        {spec.value}
-                      </dd>
-                    </div>
-                  ))}
-                </dl>
-                <Link
-                  href="/#contact"
-                  className="mt-7 block w-full border border-brass-500 px-5 py-3 text-center text-sm font-medium text-brass-500 transition-colors hover:bg-brass-500 hover:text-navy-950"
-                >
-                  Book a site visit
-                </Link>
-              </aside>
             </div>
-          </div>
-        </section>
+          </section>
+        )}
 
+        {/* Advantages Section */}
+        {service.advantages && service.advantages.length > 0 && (
+          <ServiceAdvantages
+            advantages={service.advantages}
+            title="Key Advantages"
+            variant={layouts.advantages}
+          />
+        )}
+
+        {/* Process Section */}
+        <ServiceProcess process={service.process} variant={layouts.process} />
+
+        {/* Best For Section */}
+        {service.bestFor && service.bestFor.length > 0 && (
+          <ServiceUseCases
+            bestFor={service.bestFor}
+            variant={layouts.useCases}
+          />
+        )}
+
+        {/* Specs and FAQs Section */}
+        <ServiceSpecs
+          specs={service.specs}
+          faqs={service.faqs}
+          variant={layouts.specs}
+          cta={{ text: "Book a site visit", href: "/#contact" }}
+        />
+
+        {/* Other Services Section */}
         <section className="border-t border-navy-900/10 bg-ivory-100 py-16">
           <div className="mx-auto max-w-7xl px-6 lg:px-10">
             <p className="text-sm tracking-wide text-brass-500">

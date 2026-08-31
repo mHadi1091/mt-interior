@@ -1,0 +1,102 @@
+@import "tailwindcss";
+
+:root {
+  --navy-950: #0b1422;
+  --navy-900: #0f1b2d;
+  --navy-800: #16263d;
+  --navy-700: #1e3350;
+  --brass-500: #c9a15d;
+  --brass-400: #d9b877;
+  --brass-300: #e8cd9a;
+  --ivory-100: #f5f2ea;
+  --ivory-200: #ece6d8;
+  --stone-600: #6b7280;
+
+  --font-display: "Fraunces", serif;
+  --font-body: "Inter", sans-serif;
+}
+
+@theme inline {
+  --color-navy-950: var(--navy-950);
+  --color-navy-900: var(--navy-900);
+  --color-navy-800: var(--navy-800);
+  --color-navy-700: var(--navy-700);
+  --color-brass-500: var(--brass-500);
+  --color-brass-400: var(--brass-400);
+  --color-brass-300: var(--brass-300);
+  --color-ivory-100: var(--ivory-100);
+  --color-ivory-200: var(--ivory-200);
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--ivory-100);
+  color: var(--navy-900);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--brass-400);
+  color: var(--navy-950);
+}
+
+:focus-visible {
+  outline: 2px solid var(--brass-500);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+/* diagonal cut divider, echoing the card's angled photo seams */
+.cut-diagonal-r {
+  clip-path: polygon(6% 0, 100% 0, 100% 100%, 0% 100%);
+}
+.cut-diagonal-l {
+  clip-path: polygon(0 0, 100% 0, 94% 100%, 0% 100%);
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-rise > * {
+  animation: rise 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.hero-rise > *:nth-child(1) { animation-delay: 0.05s; }
+.hero-rise > *:nth-child(2) { animation-delay: 0.15s; }
+.hero-rise > *:nth-child(3) { animation-delay: 0.25s; }
+.hero-rise > *:nth-child(4) { animation-delay: 0.35s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-rise > * {
+    animation: none;
+  }
+}

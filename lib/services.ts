@@ -7,6 +7,7 @@ export type ServiceDetail = {
   gallery: { src: string; alt: string }[];
   overview: string;
   description: string;
+  pitch: { headline: string; body: string };
   advantages: string[];
   bestFor: string[];
   process: { title: string; desc: string }[];
@@ -37,11 +38,23 @@ export const services: ServiceDetail[] = [
         src: "https://images.unsplash.com/photo-1615529182904-14819c35db37?w=1000&q=80",
         alt: "Modern office with slim gypsum partition dividing workspace",
       },
+      {
+        src: "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=1000&q=80",
+        alt: "Close-up of clean taped joint on a gypsum partition wall",
+      },
+      {
+        src: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1000&q=80",
+        alt: "Bright room divided by a freshly finished gypsum partition",
+      },
     ],
     overview:
       "Gypsum board partitions are lightweight, non-load-bearing interior walls made from gypsum plaster pressed between two layers of paper, mounted on galvanized steel frames. Using dry construction techniques with steel studs, self-tapping screws, and joint tape/compound, they offer seamless finishes with no wet work, no curing time, and no heavy mess.",
     description:
       "Installation uses dry construction techniques with steel studs, gypsum boards secured by self-tapping screws, and joint tape/compound for seamless finishes. Complete installation in 2-4 days.",
+    pitch: {
+      headline: "The fastest way to reshape a room — without the mess.",
+      body: "If you need a new wall this month, not next quarter, this is it. No wet plaster, no weeks of curing, no dust storm across your home or office. Our crew frames, boards, and finishes a room in as little as 2 days — and it comes out paint-ready, sound-dampened, and strong enough for shelving. It's the partition choice for anyone who values speed without sacrificing a clean, professional finish.",
+    },
     advantages: [
       "Rapid installation reduces project timeline dramatically",
       "Highly fire-resistant (gypsum releases water as steam when heated)",
@@ -101,11 +114,23 @@ export const services: ServiceDetail[] = [
         src: "https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=1000&q=80",
         alt: "Modern office space with full-height tempered glass walls",
       },
+      {
+        src: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1000&q=80",
+        alt: "Glass partition door detail with brushed aluminum handle",
+      },
+      {
+        src: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=1000&q=80",
+        alt: "Sunlit open-plan office divided by glass and aluminum partitions",
+      },
     ],
     overview:
       "Aluminum and glass partitions combine slim aluminum frame profiles with tempered or frosted glass panels to create transparent, modern space divisions. The aluminum is powder-coated for corrosion resistance and available in any RAL color. Glass options range from clear to frosted or tinted, with tempered or laminated safety glass for durability.",
     description:
       "The system features narrow sightlines creating a minimalist aesthetic that makes spaces feel open and connected while maintaining visual separation.",
+    pitch: {
+      headline: "Privacy that doesn't cost you your light.",
+      body: "Solid walls kill natural light and make small offices feel smaller. Glass partitions solve that — you get real acoustic and visual separation between rooms, but the space still feels open, bright, and connected. It's the upgrade most modern offices and clinics choose the moment they see it installed next door. Frosting, tinting, and integrated doors mean you control exactly how much privacy each room gets.",
+    },
     advantages: [
       "Maximizes natural light — glass doesn't block daylight like walls",
       "Creates openness while still separating zones — ideal for collaborative offices",
@@ -144,8 +169,7 @@ export const services: ServiceDetail[] = [
       { q: "How is it maintained?", a: "Simple — wipe glass with standard glass cleaner, aluminum frames need occasional dusting. No special maintenance required." },
     ],
     layoutStyle: "alternate",
-  },
-  {
+  },  {
     slug: "drywall-systems",
     name: "Drywall systems",
     shortDesc:
@@ -166,11 +190,23 @@ export const services: ServiceDetail[] = [
         src: "https://images.unsplash.com/photo-1615873968403-89e068629265?w=1000&q=80",
         alt: "Professional clinic interior with pristine partition walls and finishes",
       },
+      {
+        src: "https://images.unsplash.com/photo-1497215728101-856f4ea42174?w=1000&q=80",
+        alt: "Large open commercial floor plate mid fit-out with drywall framing",
+      },
+      {
+        src: "https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=1000&q=80",
+        alt: "Bright modern office corridor with commercial drywall partitions",
+      },
     ],
     overview:
       "Drywall systems are production-scale versions of gypsum board partitions, optimized for commercial fit-outs where speed and consistency matter. Using the same galvanized steel frame + gypsum board method but scaled for rapid crew installation across larger floor areas.",
     description:
       "Fire-resistant or moisture-resistant board variants are specified depending on building code and use. The finish is identical — smooth, paint-ready surfaces with minimal rework.",
+    pitch: {
+      headline: "Built for deadlines that don't move.",
+      body: "Commercial fit-outs live and die by the handover date. Our drywall crews are set up to move fast across large floor areas without cutting corners — fire-rated boards where code demands it, moisture-resistant boards where they don't, and a finish that's smooth enough to hand straight to your painter. If your landlord or client has a fixed date circled on the calendar, this is the system built to hit it.",
+    },
     advantages: [
       "Built for commercial speed — whole floor sections can go up in days",
       "Fire-rated options available (important for retail, clinics, institutions)",
@@ -232,11 +268,23 @@ export const services: ServiceDetail[] = [
         src: "https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=1000&q=80",
         alt: "Ceiling detail showing concealed lighting channel and suspension system",
       },
+      {
+        src: "https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=1000&q=80",
+        alt: "Bright room with recessed spotlights set into a false ceiling",
+      },
+      {
+        src: "https://images.unsplash.com/photo-1618219944342-824e40a13285?w=1000&q=80",
+        alt: "Elegant dining space lit by cove lighting inside a dropped ceiling",
+      },
     ],
     overview:
       "A false ceiling (suspended or dropped ceiling) is a secondary ceiling hung below the structural slab using a metal frame suspension system. Gypsum boards are screwed to this frame creating a smooth, flat soffit. The void above becomes a hidden chase for electrical wiring, AC ducting, plumbing, and integrated lighting.",
     description:
       "Can be as low as 100mm drop or deeper depending on wiring needs. Finished surface is seamless and paint-ready. The void provides space for cove lighting, recessed spots, and concealed infrastructure.",
+    pitch: {
+      headline: "The single upgrade that makes a room look designed.",
+      body: "A false ceiling does two jobs at once: it hides every messy wire, duct, and slab crack above your head, and it gives you a canvas for lighting that a flat painted ceiling never could. Cove lighting, recessed spots, layered depth — this is usually the difference between a room that looks 'finished' and one that looks 'designed.' It also protects your AC ducting and wiring in a fire-resistant void, so it's function and finish in one step.",
+    },
     advantages: [
       "Conceals messy slab defects, cracks, and uneven surfaces",
       "Creates a clean space for routing electrical, AC, plumbing without surface chases",
@@ -299,11 +347,23 @@ export const services: ServiceDetail[] = [
         src: "https://images.unsplash.com/photo-1449844908441-8829872d2607?w=1000&q=80",
         alt: "Built-in cabinetry and finishing carpentry detail work",
       },
+      {
+        src: "https://images.unsplash.com/photo-1600210492493-0946911123ea?w=1000&q=80",
+        alt: "Complete open-plan kitchen and living area fit-out",
+      },
+      {
+        src: "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=1000&q=80",
+        alt: "Move-in ready bedroom with coordinated flooring, paint, and fixtures",
+      },
     ],
     overview:
       "Full interior fit-out means end-to-end design and construction of a complete interior space. Beyond partitions and ceilings, this covers flooring installation, wall paneling, built-in cabinetry, paint, hardware, fixtures, and finishing details.",
     description:
       "One crew manages the sequence: partitions → flooring prep → cabinetry → finishing paint/hardware. Single point of contact means no gaps between contractors, coordinated scheduling, and unified accountability.",
+    pitch: {
+      headline: "Stop juggling five contractors. Hire one crew instead.",
+      body: "Every gap between trades — the electrician waiting on the drywaller, the painter waiting on the carpenter — is where projects lose weeks and budgets balloon. We run the whole sequence ourselves: walls, ceilings, flooring, cabinetry, and finishing, one team, one schedule, one person you call when you have a question. If you want a bare shell turned into a move-in ready space without becoming a full-time project manager yourself, this is the service built for exactly that.",
+    },
     advantages: [
       "One crew from start to finish — no handoffs between trades",
       "Coordinated sequencing prevents delays and rework",
@@ -364,11 +424,23 @@ export const services: ServiceDetail[] = [
         src: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=1000&q=80",
         alt: "Interior room with a solid dividing cement partition wall",
       },
+      {
+        src: "https://images.unsplash.com/photo-1541976590-713941681591?w=1000&q=80",
+        alt: "Mason laying concrete blocks course by course for a partition",
+      },
+      {
+        src: "https://images.unsplash.com/photo-1600566752355-35792bedcfea?w=1000&q=80",
+        alt: "Finished apartment wall showing solid cement partition construction",
+      },
     ],
     overview:
       "Cement partitions are solid block or cement-board walls built where sound isolation and structural load-bearing matter more than speed. Laid course-by-course using block or cement board with adhesive/mortar, plastered smooth on both faces, then painted.",
     description:
       "Much denser and more rigid than gypsum — better acoustic performance and load capacity, but slower to install (1-2 weeks including cure time). The result is a wall with real permanence and performance.",
+    pitch: {
+      headline: "When you need silence, not just a divider.",
+      body: "Gypsum and glass solve most partition problems, but not all of them. If you're separating apartments, boxing in a noisy plant room, or need a wall strong enough to hang cabinets and heavy fixtures without special anchors, mass wins. A cement partition takes longer to build and cure, but it delivers real, permanent sound isolation and structural strength that lighter systems simply can't match — the choice for walls that need to disappear acoustically, not just visually.",
+    },
     advantages: [
       "Best sound isolation of all partition types (mass is what stops sound)",
       "High load-bearing capacity — can support heavy fixtures, cabinetry",
@@ -429,11 +501,23 @@ export const services: ServiceDetail[] = [
         src: "https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=1000&q=80",
         alt: "Bright interior showing clean uninterrupted ceiling with recessed light",
       },
+      {
+        src: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1000&q=80",
+        alt: "Low-headroom apartment room with flush direct-fixed ceiling finish",
+      },
+      {
+        src: "https://images.unsplash.com/photo-1615874959474-d609969a20ed?w=1000&q=80",
+        alt: "Clean modern bedroom with smooth ceiling and minimal fixtures",
+      },
     ],
     overview:
       "A direct-fixed gypsum ceiling is a smooth, seamless ceiling mounted flush to an existing slab using adhesive or fasteners. It smooths out uneven, cracked, or discolored slabs into a single paint-ready plane. Similar to a false ceiling in finish, but no drop/suspension frame needed.",
     description:
       "Ideal for low-headroom spaces where a drop isn't feasible. Boards are affixed directly to the structure above. Finishing is identical — taped joints, compound, paint. No void = no services above, but perfect for cosmetic upgrades.",
+    pitch: {
+      headline: "A brand new ceiling, without losing an inch of height.",
+      body: "Not every room can afford to drop 100-150mm for a false ceiling — low-headroom apartments and older buildings often can't. A direct-fixed gypsum ceiling gives you the same flawless, paint-ready surface without the suspension frame, hiding slab cracks and stains at a fraction of the height loss. It's the quick, budget-friendly fix for a room that just needs its ceiling to look brand new again.",
+    },
     advantages: [
       "Covers slab defects and creates a uniform, modern ceiling plane",
       "No headroom loss (compared to a dropped ceiling)",

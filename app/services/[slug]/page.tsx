@@ -98,7 +98,6 @@ export default async function ServicePage({
 
   const layouts = getLayoutVariants(service.layoutStyle);
   const isAlternateLayout = service.layoutStyle === "alternate";
-  const isMinimalist = service.layoutStyle === "minimalist" || service.layoutStyle === "showcase";
 
   return (
     <>
@@ -116,9 +115,7 @@ export default async function ServicePage({
               >
                 ← All services
               </Link>
-              <p className="mt-6 text-sm tracking-wide text-brass-400">
-                {service.name}
-              </p>
+              <p className="mt-6 text-sm text-brass-400">{service.name}</p>
               <h1 className="mt-4 font-display text-4xl leading-tight text-ivory-100 sm:text-5xl">
                 {service.hero}
               </h1>
@@ -128,7 +125,7 @@ export default async function ServicePage({
               <div className="mt-9">
                 <Link
                   href="/#contact"
-                  className="bg-brass-500 px-7 py-3.5 text-sm font-medium tracking-wide text-navy-950 transition-colors hover:bg-brass-400"
+                  className="bg-brass-500 px-7 py-3.5 text-sm font-medium text-navy-950 transition-colors hover:bg-brass-400"
                 >
                   Get a free consultation
                 </Link>
@@ -152,7 +149,7 @@ export default async function ServicePage({
           <section className="border-t border-navy-900/10 bg-navy-950 py-16 lg:py-20">
             <div className="mx-auto max-w-7xl px-6 lg:px-10">
               <div className="max-w-2xl">
-                <p className="text-sm tracking-wide text-brass-400">About this service</p>
+                <p className="text-sm text-brass-400">About this service</p>
                 <p className="mt-6 text-base leading-relaxed text-ivory-100/80">
                   {service.description}
                 </p>
@@ -168,7 +165,7 @@ export default async function ServicePage({
               <div className={`grid gap-10 lg:gap-14 ${isAlternateLayout ? "lg:grid-cols-[1fr_0.9fr]" : "lg:grid-cols-[0.9fr_1fr]"}`}>
                 <div className={isAlternateLayout ? "lg:order-2" : ""}>
                   <div className="border-l-4 border-brass-500 pl-6">
-                    <p className="text-sm tracking-wide text-brass-500">Why choose this</p>
+                    <p className="text-sm text-brass-500">Why choose this</p>
                     <h2 className="mt-3 font-display text-3xl leading-tight text-navy-900 sm:text-4xl">
                       {service.pitch.headline}
                     </h2>
@@ -193,34 +190,6 @@ export default async function ServicePage({
           />
         )}
 
-        {/* Extra Image Strip - keeps the page image-rich */}
-        {service.gallery && service.gallery.length > 0 && (
-          <section className="border-t border-navy-900/10 bg-navy-950 py-16 lg:py-20">
-            <div className="mx-auto max-w-7xl px-6 lg:px-10">
-              <p className="text-sm tracking-wide text-brass-400">In the field</p>
-              <h2 className="mt-3 font-display text-3xl leading-tight text-ivory-100 sm:text-4xl">
-                A closer look at the finish
-              </h2>
-              <div className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
-                {service.gallery.map((img, i) => (
-                  <div
-                    key={i}
-                    className={`cut-diagonal-l overflow-hidden ${
-                      i === 0 ? "col-span-2 row-span-2 sm:col-span-2" : "aspect-square"
-                    }`}
-                  >
-                    <img
-                      src={img.src}
-                      alt={img.alt}
-                      className="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
-                    />
-                  </div>
-                ))}
-              </div>
-            </div>
-          </section>
-        )}
-
         {/* Process Section */}
         <ServiceProcess process={service.process} variant={layouts.process} />
 
@@ -243,9 +212,7 @@ export default async function ServicePage({
         {/* Other Services Section */}
         <section className="border-t border-navy-900/10 bg-ivory-100 py-16">
           <div className="mx-auto max-w-7xl px-6 lg:px-10">
-            <p className="text-sm tracking-wide text-brass-500">
-              Other services
-            </p>
+            <p className="text-sm text-brass-500">Other services</p>
             <div className="mt-6 flex flex-wrap gap-3">
               {services
                 .filter((s) => s.slug !== service.slug)

@@ -559,6 +559,77 @@ export const services: ServiceDetail[] = [
   },
 ];
 
+const localImageSets: Record<string, string[]> = {
+  "gypsum-board-partition": [
+    "gypsum-board-partition-labour-working-1.jpg",
+    "Gypsum board partition labour working 2.avif",
+    "Gypsum board partition labour working 3.webp",
+    "Gypsum board partition labour working 4.webp",
+    "Gypsum board partition labour working 5.webp",
+    "Gypsum board partition labour working 6.jpg",
+    "Gypsum board partition labour working 7.jpeg",
+    "Gypsum board partition labour working 8.jpg",
+    "Gypsum board partition labour working 9.webp",
+  ],
+  "aluminum-glass-partition": [
+    "professional-glass-partitions- 1.webp",
+    "professional-glass-partitions- 2.avif",
+    "professional-glass-partitions- 3.jpg",
+    "professional-glass-partitions- 4.avif",
+    "professional-glass-partitions- 5.jpg",
+    "professional-glass-partitions- 6.jpg",
+    "professional-glass-partitions- 7.webp",
+    "professional-glass-partitions- 8.webp",
+    "professional-glass-partitions- 9.jpg",
+    "professional-glass-partitions- 10.avif",
+  ],
+  "drywall-systems": [
+    "drywall-systems-1.jpg",
+    "drywall-systems-2.jpg",
+    "drywall-systems-3.jpg",
+    "drywall-systems-4.jpeg",
+    "drywall-systems-5.jpg",
+    "drywall-systems-6",
+  ],
+  "dumpa-false-ceiling": [
+    "Dumpa-ceiling-1.jpg",
+    "Dumpa-ceiling-2.jpg",
+    "Dumpa-ceiling-3.jpg",
+    "Dumpa-ceiling-4.jpg",
+    "Dumpa-ceiling-5.jpg",
+    "Dumpa-ceiling-6.jpg",
+    "Dumpa-ceiling-7.webp",
+    "Dumpa-ceiling-8.avif",
+    "Dumpa-ceiling-9.jpg",
+  ],
+  "cement-partition": [
+    "cement partitions-1.jpg",
+    "cement partitions-2.avif",
+    "cement partitions-3.jpg",
+    "cement partitions-4.jpg",
+    "cement partitions-5.avif",
+  ],
+  "gypsum-ceiling": [
+    "gypsum-ceiling-1.avif",
+    "Gypsum ceiling-2.webp",
+    "Gypsum ceiling-3.webp",
+    "Gypsum ceiling-4.webp",
+    "Gypsum ceiling-5.jpg",
+    "Gypsum ceiling-6.avif",
+  ],
+};
+
+for (const service of services) {
+  const imageSet = localImageSets[service.slug];
+  if (!imageSet) continue;
+
+  service.heroImage = `/images/${imageSet[0]}`;
+  service.gallery = imageSet.map((filename) => ({
+    src: `/images/${filename}`,
+    alt: `${service.name} project`,
+  }));
+}
+
 export function getServiceBySlug(slug: string) {
   return services.find((s) => s.slug === slug);
 }

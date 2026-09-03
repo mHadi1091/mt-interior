@@ -6,7 +6,6 @@ import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import ServiceAdvantages from "@/components/ServiceAdvantages";
 import ServiceUseCases from "@/components/ServiceUseCases";
-import ServiceGallery from "@/components/ServiceGallery";
 import ServiceProcess from "@/components/ServiceProcess";
 import ServiceSpecs from "@/components/ServiceSpecs";
 import { services, getServiceBySlug } from "@/lib/services";
@@ -144,18 +143,26 @@ export default async function ServicePage({
           </div>
         </section>
 
-        {/* Gallery Section */}
-        <ServiceGallery gallery={service.gallery} variant={layouts.gallery} />
-
         {/* Description Section - Only for certain layout styles */}
         {service.description && (
-          <section className="border-t border-navy-900/10 bg-navy-950 py-16 lg:py-20">
+          <section className="relative overflow-hidden border-t border-ivory-100/10 bg-navy-950 py-20 lg:py-28">
             <div className="mx-auto max-w-7xl px-6 lg:px-10">
-              <div className="max-w-2xl">
-                <p className="text-sm tracking-wide text-brass-400">About this service</p>
-                <p className="mt-6 text-base leading-relaxed text-ivory-100/80">
-                  {service.description}
-                </p>
+              <div className="grid gap-10 lg:grid-cols-[0.7fr_1.3fr] lg:gap-20">
+                <div>
+                  <div className="flex items-center gap-4 text-brass-400">
+                    <span className="font-display text-2xl">01</span>
+                    <span className="h-px w-12 bg-brass-400/60" />
+                  </div>
+                  <p className="mt-6 text-sm tracking-wide text-brass-400">About this service</p>
+                  <h2 className="mt-4 max-w-xs font-display text-3xl leading-tight text-ivory-100 sm:text-4xl">
+                    Thoughtful work. Clear results.
+                  </h2>
+                </div>
+                <div className="flex items-center">
+                  <p className="max-w-3xl text-lg leading-relaxed text-ivory-100/75 sm:text-xl">
+                    {service.description}
+                  </p>
+                </div>
               </div>
             </div>
           </section>

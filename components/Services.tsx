@@ -79,10 +79,19 @@ export default function Services() {
         <div className="mt-16 grid gap-x-8 gap-y-10 border-t border-navy-900/10 pt-10 sm:grid-cols-2 lg:grid-cols-3">
           {serviceData.map((s) => (
             <Link key={s.slug} href={`/services/${s.slug}`} className="group block">
-              <div className="flex h-12 w-12 items-center justify-center border border-navy-900/15 text-navy-800 transition-colors group-hover:border-brass-500 group-hover:text-brass-500">
-                {icons[s.slug]}
+              <div className="relative aspect-[4/3] overflow-hidden bg-navy-900">
+                <img
+                  src={s.gallery[0]?.src ?? s.heroImage}
+                  alt={s.name}
+                  loading="lazy"
+                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-navy-950/70 via-transparent to-transparent" />
+                <div className="absolute bottom-4 left-4 flex h-12 w-12 items-center justify-center border border-ivory-100/40 bg-navy-950/80 text-brass-300 backdrop-blur-sm transition-colors group-hover:border-brass-300">
+                  {icons[s.slug]}
+                </div>
               </div>
-              <h3 className="mt-6 font-display text-xl text-navy-900 group-hover:text-brass-500">
+              <h3 className="mt-5 font-display text-xl text-navy-900 transition-colors group-hover:text-brass-500">
                 {s.name}
               </h3>
               <p className="mt-2 text-sm leading-relaxed text-navy-900/55">
